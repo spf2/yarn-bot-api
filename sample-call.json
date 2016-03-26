@@ -1,0 +1,58 @@
+{
+  "bot": {
+    "ident": "bot:9FZ4gQUIuWRtAMIKzKIT",
+    "name": "@sched"
+  },
+  "delivery": {
+    "thread": {
+      "threadId": "9FZ5oCzjBR432Wr6IJhJ",
+      "topic": "first",
+      "created": "2016-03-26T02:24:42.000Z",
+      "updated": "2016-03-26T03:58:41.000Z",
+      "participants": [
+        {
+          "user": {
+            "ident": "user:9FZ5oRZIkchc3KeQGGCu",
+            "name": "Steve Farrell"
+          },
+          "invited": "2016-03-26T02:24:42.000Z",
+          "joined": "2016-03-26T02:24:42.000Z"
+        },
+        {
+          "user": {
+            "ident": "user:9FZ5MjLjGA4EMwXkmyFR",
+            "name": "bob bobson"
+          },
+          "invitedBy": {
+            "ident": "user:9FZ5oRZIkchc3KeQGGCu",
+            "name": "Steve Farrell"
+          },
+          "invited": "2016-03-26T02:50:43.000Z",
+          "joined": "2016-03-26T02:50:43.000Z"
+        },
+        {
+          "user": {
+            "ident": "bot:9FZ4gQUIuWRtAMIKzKIT",
+            "name": "@sched"
+          },
+          "invitedBy": {
+            "ident": "user:9FZ5oRZIkchc3KeQGGCu",
+            "name": "Steve Farrell"
+          },
+          "invited": "2016-03-26T03:58:41.000Z",
+          "joined": "2016-03-26T03:58:41.000Z"
+        }
+      ]
+    },
+    "event": {
+      "type": "ADDED",
+      "created": "2016-03-26T03:58:41.000Z",
+      "users": [
+        {
+          "ident": "bot:9FZ4gQUIuWRtAMIKzKIT",
+          "name": "@sched"
+        }
+      ]
+    }
+  }
+}
