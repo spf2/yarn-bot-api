@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option go_package = "pb";
+
+import "common.proto";
+
+// When bots are invoked, they are done so with this structure.
+// Note that the oneof (union) mapping into json is simple: only one of the
+// fields is populated.
+message BotInvocation {
+  // The bot being invoked.
+  User bot = 1;
+
+  oneof call {
+    // Populated when the bot was @mentioned.
+    BotMention mention = 2;
+
+    // Populated when the bot is a thead participant.
+    BotDelivery delivery = 3;
+
+    // Populated when a user submits a completed form to a bot.
+    BotFormSubmission submission = 4;
+  }
+}
+
+// Information about the mention.
+message BotMention {
+  Thread thread = 1;
+  Message message = 2;
+}
+
+// When bots are members of threads, they can be delivered messages and
+// events that happen in those threads.
+message BotDelivery {
+  Thread thread = 1;
+  oneof payload {
+    Message message = 2;
+    Event event = 3;
+  }
+}
+
+// If a bot sends a form to a user, the user can complete the form and
+// send it back to the bot for processing.
+message BotFormSubmission {
+  // The user submitting the form.
+  User user = 1;
+
+  // The form being submitted. It's expected to have an agent with a bot ident.
+  Form form = 2;
+}
+
+// When bots are invoked, they can reply with a message.  The recipient of
+// the message is determined by the bot service (caller) as follows:
+//
+// - BotMention, BotDelivery: the thread if present, otherwise sender
+// - BotFormSubmission: the user submitting the form
+message BotInvocationReply {
+  Message message = 1;
+}
+
+// Bots can also call into the bot service asynchronously using BotCalls.
+//
+// While messages from common (Thread, User, etc) are re-used, caller is only
+// expected to fill in fields that make sense (eg just thread_id for Thread).
+// Indeed, other fields will be overwritten or ignored.
+message BotCall {
+  // The bot making the call. Not needed if same as auth credentials.
+  User bot = 1;
+
+  oneof recipient {
+    // Everyone in the thread. Messages will show up in the thread,
+    // and forms will be sent to their shell number.
+    Thread thread = 2;  // Just thread_id required
+
+    // A specific user. The payload will show up in the user's shell number.
+    User user = 3;  // Just ident required
+  }
+
+  oneof payload {
+    // A message to display to recipients.
+    Message message = 4;  // Sender ignored
+
+    // A form the bot wants recipients to fill in.
+    Form form = 5;  // Agent ignored
+  }
+}
