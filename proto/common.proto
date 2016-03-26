@@ -1,5 +1,9 @@
 syntax = "proto3";
 
+package yarn;
+
+import "google/protobuf/timestamp.proto";
+
 option go_package = "pb";
 
 //
@@ -21,8 +25,8 @@ message User {
 message Thread {
   string thread_id = 1;
   string topic = 2;
-  Timestamp created = 3;
-  Timestamp updated = 4;
+  google.protobuf.Timestamp created = 3;
+  google.protobuf.Timestamp updated = 4;
   repeated Participant participants = 5;
   User creator = 6;
 }
@@ -31,9 +35,9 @@ message Thread {
 message Participant {
   User user = 1;
   User invited_by = 2;
-  Timestamp invited = 3;
-  Timestamp joined = 4;
-  Timestamp left = 5;
+  google.protobuf.Timestamp invited = 3;
+  google.protobuf.Timestamp joined = 4;
+  google.protobuf.Timestamp left = 5;
 }
 
 //
@@ -41,7 +45,7 @@ message Participant {
 //
 
 message Message {
-  Timestamp created = 1;
+  google.protobuf.Timestamp created = 1;
   User sender = 2;
   string text = 3;
   repeated MediaItem media_items = 4;
@@ -68,7 +72,7 @@ message Event {
   }
 
   EventType type = 1;
-  Timestamp created = 2;
+  google.protobuf.Timestamp created = 2;
   repeated User users = 3;
 }
 
@@ -83,7 +87,7 @@ message Form {
   string thread_id = 4;
   string label = 5;
   repeated FormItem items = 6;
-  Timestamp created = 7;
+  google.protobuf.Timestamp created = 7;
 }
 
 message FormItem {
