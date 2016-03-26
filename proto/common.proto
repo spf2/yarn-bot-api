@@ -95,7 +95,6 @@ message FormItem {
     FormInput input = 1;
     FormSelect select = 2;
   }
-  bool skipped = 3;  // Item was intentionally skipped.
 }
 
 message FormInput {
@@ -104,6 +103,7 @@ message FormInput {
     NAME = 1;  // A name which is expcted to be new
     PHONE = 2;  // A phone number
     CONTACT = 3;  // A contact. Value could be a name (if partial), or ident
+    BOOLEAN = 4;  // Yes/no, checkbox, etc.
   }
 
   FormInputType type = 1;
