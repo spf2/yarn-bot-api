@@ -21,8 +21,8 @@ message User {
 message Thread {
   string thread_id = 1;
   string topic = 2;
-  int64 created = 3;
-  int64 updated = 4;
+  Timestamp created = 3;
+  Timestamp updated = 4;
   repeated Participant participants = 5;
   User creator = 6;
 }
@@ -31,9 +31,9 @@ message Thread {
 message Participant {
   User user = 1;
   User invited_by = 2;
-  int64 invited = 3;
-  int64 joined = 4;
-  int64 left = 5;
+  Timestamp invited = 3;
+  Timestamp joined = 4;
+  Timestamp left = 5;
 }
 
 //
@@ -41,7 +41,7 @@ message Participant {
 //
 
 message Message {
-  int64 created = 1;
+  Timestamp created = 1;
   User sender = 2;
   string text = 3;
   repeated MediaItem media_items = 4;
@@ -68,7 +68,7 @@ message Event {
   }
 
   EventType type = 1;
-  int64 created = 2;
+  Timestamp created = 2;
   repeated User users = 3;
 }
 
@@ -83,7 +83,7 @@ message Form {
   string thread_id = 4;
   string label = 5;
   repeated FormItem items = 6;
-  int64 created = 7;
+  Timestamp created = 7;
 }
 
 message FormItem {
