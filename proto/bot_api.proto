@@ -60,7 +60,7 @@ message BotInvocationReply {
   Message message = 1;
 }
 
-// Bots can also call into the bot service asynchronously using BotCalls.
+// Bots can also send messages and forms asynchronously using BotCalls.
 //
 // While messages from common (Thread, User, etc) are re-used, caller is only
 // expected to fill in fields that make sense (eg just thread_id for Thread).

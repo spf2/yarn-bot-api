@@ -103,12 +103,12 @@ message FormInput {
     NAME = 1;  // A name which is expcted to be new
     PHONE = 2;  // A phone number
     CONTACT = 3;  // A contact. Value could be a name (if partial), or ident
-    BOOLEAN = 4;  // Yes/no, checkbox, etc.
+    BOOLEAN = 4;  // Yes/no, checkbox, etc. Value will be "true" or "false"
   }
 
   FormInputType type = 1;
   string name = 2;
-  string label = 3; // overrides name when displaying to user
+  string label = 3; // overrides description generated from type
   string value = 4;
 }
 
