@@ -36,7 +36,10 @@ message BotMention {
 message BotDelivery {
   Thread thread = 1;
   oneof payload {
+    // A text message.
     Message message = 2;
+
+    // An event that happened, such as adding this bot to a thread.
     Event event = 3;
   }
 }
