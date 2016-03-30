@@ -76,7 +76,7 @@ message Event {
     JOINED = 4;
     LEFT = 5;
     REMOVED = 6;
-    
+
     CHANGED_TOPIC = 10;
     CHANGED_LOCATION = 11;
   }
@@ -88,6 +88,10 @@ message Event {
 
 //
 // Forms
+//
+// These are intended to map fairly close to to html forms. Unlike web forms,
+// you submit these by mutating them (setting values, etc), and then submitting
+// the whole thing.
 //
 
 message Form {
@@ -123,14 +127,22 @@ message FormInput {
 }
 
 message FormSelect {
-  string name = 1;
-  bool multiple = 2;  // whether multiple options can be selected
-  string label = 3;  // overrides "choose from" when displaying to user
-  repeated FormOption options = 4;
+  enum FormSelectType {
+    UNKNOWN = 0;
+    DATE = 1;  // Present as a calendar; values expected to be YYYY-MM-DD
+    GRID = 2;  // Present as an image grid; uses media for thumbnails.
+  }
+
+  FormSelectType type = 1;
+  string name = 2;
+  bool multiple = 3;  // whether multiple options can be selected
+  string label = 4;  // overrides "choose from" when displaying to user
+  repeated FormOption options = 5;
 }
 
 message FormOption {
   string name = 1;
   string value = 2;
   bool selected = 3;
+  MediaItem media = 4;
 }
