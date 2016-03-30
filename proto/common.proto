@@ -131,7 +131,6 @@ message FormSelect {
     UNKNOWN = 0;  // Not specified; typically present as a selector or list
     DATE = 1;  // Can present as a calendar; values like YYYY-MM-DD
     DATETIME = 2;  // Can present as calendar; values RFC 3339
-    GRID = 3;  // Can present as image grid with option media for thumbnails
   }
 
   FormSelectType type = 1;
