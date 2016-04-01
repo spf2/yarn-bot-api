@@ -13,7 +13,7 @@ message BotInvocation {
   // The bot being invoked.
   User bot = 1;
 
-  oneof call {
+  oneof invocation {
     // Populated when the bot was @mentioned.
     BotMention mention = 2;
 
@@ -54,13 +54,17 @@ message BotFormSubmission {
   Form form = 2;
 }
 
-// When bots are invoked, they can reply with a message.  The recipient of
-// the message is determined by the bot service (caller) as follows:
-//
-// - BotMention, BotDelivery: the thread if present, otherwise sender
-// - BotFormSubmission: the user submitting the form
+// When bots are invoked, they can reply with a message or form, and ask for
+// that to be delivered just to the user who initiated the invocation, or
+// to all thread participants.
 message BotInvocationReply {
-  Message message = 1;
+  oneof payload {
+    Message message = 1;
+    Form form = 2;
+  }
+
+  // If true, deliver payload to everyone in thread.
+  bool all_participants = 3;
 }
 
 // Bots can also send messages and forms asynchronously using BotCalls.
