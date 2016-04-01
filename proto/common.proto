@@ -116,7 +116,7 @@ message FormInput {
     UNSPECIFIED = 0;
     NAME = 1;  // A name which is expcted to be new
     PHONE = 2;  // A phone number
-    CONTACT = 3;  // A contact. Value could be a name (if partial), or ident
+    CONTACT = 3;  // A contact of the user. Value could be a name (if partial), or ident
     BOOLEAN = 4;  // Yes/no, checkbox, etc. Value will be "true" or "false"
   }
 
