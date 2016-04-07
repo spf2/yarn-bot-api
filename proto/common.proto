@@ -53,10 +53,11 @@ message GeoLocation {
 //
 
 message Message {
-  google.protobuf.Timestamp created = 1;
-  User sender = 2;
-  string text = 3;
-  repeated MediaItem media_items = 4;
+  string message_id = 1;
+  google.protobuf.Timestamp created = 2;
+  User sender = 3;
+  string text = 4;
+  repeated MediaItem media_items = 5;
 }
 
 message MediaItem {
@@ -82,8 +83,10 @@ message Event {
   }
 
   EventType type = 1;
-  google.protobuf.Timestamp created = 2;
-  repeated User users = 3;
+  string event_id = 2;
+  User actor = 3;
+  google.protobuf.Timestamp created = 4;
+  repeated User users = 5;
 }
 
 //
