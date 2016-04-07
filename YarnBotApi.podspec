@@ -1,7 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'YarnBotApi'
   s.version  = '0.0.1'
-  s.license  = 'MIT'
+  s.license  = { :type => 'MIT' }
+  s.authors  = 'spf2'
+  s.homepage = 'https://github.com/spf2/yarn-bot-api'
+  s.source   = { :git => 'https://github.com/spf2/yarn-bot-api.git' }
+  s.summary  = 'Yarn Bot API'
 
   s.ios.deployment_target = '7.1'
   s.osx.deployment_target = '10.9'
