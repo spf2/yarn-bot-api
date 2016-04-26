@@ -78,7 +78,7 @@ message Event {
     LEFT = 5;
     REMOVED = 6;
     DESTROYED = 7;
-
+    TYPING = 8;
     CHANGED_TOPIC = 10;
     CHANGED_LOCATION = 11;
   }
