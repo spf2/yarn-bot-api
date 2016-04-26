@@ -162,6 +162,6 @@ message Delivery {
     Event event = 2;
     Form form = 3;
   }
-  bool all_recipients = 4;  // If the message was intended for everyone in thread.
+  bool all_participants = 4;  // If the payload is for everyone in thread.
   Thread thread = 5;  // Participants are not populated
 }
