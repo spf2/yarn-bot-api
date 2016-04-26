@@ -77,6 +77,7 @@ message Event {
     JOINED = 4;
     LEFT = 5;
     REMOVED = 6;
+    DESTROYED = 7;
 
     CHANGED_TOPIC = 10;
     CHANGED_LOCATION = 11;
@@ -148,4 +149,19 @@ message FormOption {
   string value = 2;
   bool selected = 3;
   MediaItem media = 4;
+}
+
+//
+// Delivery
+//
+// Recommended representation for clients to store a union of event, form,
+// message.
+message Delivery {
+  oneof payload {
+    Message message = 1;
+    Event event = 2;
+    Form form = 3;
+  }
+  bool all_recipients = 4;  // If the message was intended for everyone in thread.
+  Thread thread = 5;  // Participants are not populated
 }
