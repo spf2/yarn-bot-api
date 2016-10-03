@@ -17,6 +17,11 @@ message User {
   string name = 2;
 }
 
+// A script for adding client-side features.
+message Script {
+  string url = 1;
+}
+
 //
 // Threads
 //
@@ -79,6 +84,7 @@ message Event {
     REMOVED = 6;
     DESTROYED = 7;
     TYPING = 8;
+    ACTION = 9;
     CHANGED_TOPIC = 10;
     CHANGED_LOCATION = 11;
   }
@@ -88,6 +94,17 @@ message Event {
   User actor = 3;
   google.protobuf.Timestamp created = 4;
   repeated User users = 5;
+  repeated Message messages = 6;
+
+  // Must be populated if type=ACTION
+  Action action = 7;
+}
+
+// An action defined by a third party.
+message Action {
+  User owner = 1;
+  string name = 2;
+  string value = 3;
 }
 
 //
